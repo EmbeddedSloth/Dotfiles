@@ -1,0 +1,1795 @@
+/*===============================================================
+
+STYLE SETTINGS METADATA
+*===============================================================*/
+
+
+
+/* @settings
+
+name: Soft Paper Dracula
+
+id: soft-paper-dracula-settings
+
+settings:
+
+-
+
+id: sp-see-more
+
+title: The "See More" Settings
+
+type: heading
+
+level: 2
+
+collapsed: true
+
+-
+
+id: sp-compact-all
+
+title: Condense everything
+
+description: Enables all condensing settings at once
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-compact-bases
+
+title: Make bases condensed
+
+description: Tighter vertical spacing in Bases plugin tables
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-compact-explorer
+
+title: Make file explorer condensed
+
+description: Tighter vertical spacing in the file explorer
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-compact-explorer-extra
+
+title: Make file explorer extra condensed
+
+description: Even tighter spacing (18px rows, matches sidebar panes)
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-compact-panes
+
+title: Make sidebar panes condensed
+
+description: Tighter vertical spacing in Tags, Properties, Backlinks, Outgoing Links, Outline, Bookmarks, and Search panes
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-compact-properties
+
+title: Make in-note properties condensed
+
+description: Tighter vertical spacing in the properties/metadata section of notes
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-compact-body
+
+title: Make body text condensed
+
+description: Tighter line spacing and paragraph gaps in the editor (keeps font size unchanged)
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-compact-settings
+
+title: Make settings popup condensed
+
+description: Tighter spacing in the Settings modal sidebar and main content
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-special-tweaks
+
+title: Special Tweaks
+
+type: heading
+
+level: 2
+
+collapsed: true
+
+-
+
+id: sp-hide-add-property
+
+title: Hide "Add property" button
+
+description: Remove the "Add property" button below properties
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-hide-scrollbars
+
+title: Hide scrollbars
+
+type: class-toggle
+
+default: true
+
+-
+
+id: sp-status-bar-blue
+
+title: Make status bar blue
+
+description: Toggle the lower-right file details bar between accent color and surface color
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-settings-transparent-80
+
+title: Make settings more see-through
+
+description: Settings window at 80% opacity for even more visibility
+
+type: class-toggle
+
+default: false
+
+-
+
+id: sp-rainbow-folders
+
+title: Rainbow-Colored Folders
+
+description: Switch from ACE-colored (5 hues) to full 11-color rainbow folders (snippet provided by Joel Anderson)
+
+type: class-toggle
+
+default: false
+
+*/
+
+
+
+/*===============================================================
+
+CSS CUSTOM PROPERTIES — FREQUENTLY USED COLORS
+*===============================================================*/
+
+
+
+:root {
+
+--sp-teal-link: #8BE9FD;
+
+--sp-teal-active: #8BE9FD;
+
+--sp-blue-light: #7862D0;
+
+--sp-teal-dark: #A47AE0;
+
+--sp-surface-gray: #191A21;
+
+--sp-cream-light: #FFFBEB;
+
+}
+
+
+
+/*===============================================================
+
+GLOBAL BASE STYLES & SCROLLBARS
+*===============================================================*/
+
+
+
+/* Inline title color */
+
+.theme-light .inline-title {
+
+color: #1F1F1F;
+
+}
+
+
+
+.metadata-properties-heading {
+
+--bold-weight: var(--font-medium);
+
+}
+
+
+
+/* Properties bottom divider */
+
+.metadata-container {
+
+border-bottom: 1px solid var(--background-modifier-border);
+
+padding-bottom: 16px;
+
+margin-bottom: 20px;
+
+}
+
+
+
+/* Callout title alignment */
+
+.callout .callout-title {
+
+align-items: center;
+
+}
+
+
+
+/* Hide "Add property" button (Style Settings toggle) */
+
+.sp-hide-add-property .metadata-add-button {
+
+display: none;
+
+}
+
+
+
+/* Default scrollbar: thin and transparent */
+
+*::-webkit-scrollbar {
+
+width: 8px;
+
+height: 8px;
+
+}
+
+*::-webkit-scrollbar-track {
+
+background: transparent;
+
+}
+
+*::-webkit-scrollbar-thumb {
+
+background: rgba(0, 0, 0, 0.15);
+
+border-radius: 4px;
+
+}
+
+*::-webkit-scrollbar-thumb:hover {
+
+background: rgba(0, 0, 0, 0.25);
+
+}
+
+
+
+/* Hide scrollbars (Style Settings toggle) */
+
+.sp-hide-scrollbars *::-webkit-scrollbar {
+
+display: none;
+
+}
+
+
+
+/*===============================================================
+
+LIGHT THEME — CONSOLIDATED COLOR VARIABLES & MAPPINGS
+*===============================================================*/
+
+
+
+/* Light mode — Dracula Light base colors */
+
+.theme-light {
+
+/* Base color palette */
+
+--ctp-rosewater: 191, 24, 90;
+
+--ctp-flamingo: 191, 24, 90;
+
+--ctp-pink: 191, 24, 90;
+
+--ctp-mauve: 79, 58, 161;
+
+--ctp-red: 203, 58, 42;
+
+--ctp-maroon: 215, 76, 61;
+
+--ctp-peach: 209, 99, 25;
+
+--ctp-yellow: 158, 132, 26;
+
+--ctp-green: 25, 141, 12;
+
+--ctp-teal: 42, 161, 152;
+
+--ctp-sky: 23, 146, 153;
+
+--ctp-sapphire: 100, 74, 201;
+
+--ctp-blue: 3, 106, 150;
+
+--ctp-lavender: 120, 98, 208;
+
+--ctp-text: 31, 31, 31;
+
+--ctp-subtext1: 209, 99, 25;
+
+--ctp-subtext0: 4, 127, 180;
+
+--ctp-overlay2: 108, 102, 75;
+
+--ctp-overlay1: 188, 186, 179;
+
+--ctp-overlay0: 3, 106, 150;
+
+--ctp-surface2: 169, 167, 159;
+
+--ctp-surface1: 188, 186, 179;
+
+--ctp-surface0: 206, 204, 192;
+
+--ctp-base: 255, 251, 235;
+
+--ctp-mantle: 237, 233, 218;
+
+--ctp-crust: 222, 219, 204;
+
+
+
+/* Color mappings to Obsidian variables */
+
+--mono-rgb-0: var(--ctp-crust);
+
+--mono-rgb-100: var(--ctp-text);
+
+--color-red-rgb: var(--ctp-red);
+
+--color-red: rgb(var(--ctp-red));
+
+--color-green-rgb: var(--ctp-green);
+
+--color-green: rgb(var(--ctp-green));
+
+--color-orange-rgb: var(--ctp-peach);
+
+--color-orange: rgb(var(--ctp-peach));
+
+--color-yellow-rgb: var(--ctp-yellow);
+
+--color-yellow: rgb(var(--ctp-yellow));
+
+--color-cyan-rgb: var(--ctp-sky);
+
+--color-cyan: rgb(var(--ctp-sky));
+
+--color-blue-rgb: var(--ctp-blue);
+
+--color-blue: rgb(var(--ctp-blue));
+
+--color-purple-rgb: var(--ctp-lavender);
+
+--color-purple: rgb(var(--ctp-lavender));
+
+--color-pink-rgb: var(--ctp-pink);
+
+--color-pink: rgb(var(--ctp-pink));
+
+
+/* Base color scales */
+
+--color-base-00: rgb(var(--ctp-crust));
+
+--color-base-10: rgb(var(--ctp-mantle));
+
+--color-base-20: rgb(var(--ctp-base));
+
+--color-base-25: rgb(var(--ctp-surface0));
+
+--color-base-30: rgb(var(--ctp-surface1));
+
+--color-base-35: rgb(var(--ctp-surface2));
+
+--color-base-40: rgb(var(--ctp-overlay0));
+
+--color-base-50: rgb(var(--ctp-overlay1));
+
+--color-base-60: rgb(var(--ctp-overlay2));
+
+--color-base-70: rgb(var(--ctp-subtext0));
+
+--color-base-100: rgb(var(--ctp-text));
+
+
+/* Highlighting */
+
+--text-highlight-bg: rgba(var(--ctp-yellow), 0.2);
+
+--text-highlight-bg-active: rgba(var(--ctp-yellow), 0.4);
+
+
+/* Shadows and effects */
+
+--input-shadow: inset 0 0.5px 0.5px 0.5px rgba(255, 255, 255, 0.09),
+
+0 2px 4px 0 rgba(var(--ctp-crust), 0.15),
+
+0 1px 1.5px 0 rgba(var(--ctp-crust), 0.1),
+
+0 1px 2px 0 rgba(var(--ctp-crust), 0.2),
+
+0 0 0 0 transparent;
+
+--input-shadow-hover: inset 0 0.5px 1px 0.5px rgba(255, 255, 255, 0.16),
+
+0 2px 3px 0 rgba(var(--ctp-crust), 0.3),
+
+0 1px 1.5px 0 rgba(var(--ctp-crust), 0.2),
+
+0 1px 2px 0 rgba(var(--ctp-crust), 0.4),
+
+0 0 0 0 transparent;
+
+--shadow-s: 0px 1px 2px rgba(var(--ctp-crust), 0.121),
+
+0px 3.4px 6.7px rgba(var(--ctp-crust), 0.179),
+
+0px 15px 30px rgba(var(--ctp-crust), 0.3);
+
+--shadow-l: 0px 1.8px 7.3px rgba(var(--ctp-crust), 0.071),
+
+0px 6.3px 24.7px rgba(var(--ctp-crust), 0.112),
+
+0px 30px 90px rgba(var(--ctp-crust), 0.2);
+
+
+/* Background colors */
+
+--background-primary: rgb(var(--ctp-base));
+
+--background-primary-alt: rgb(var(--ctp-mantle));
+
+--background-secondary: rgb(var(--ctp-mantle));
+
+--background-secondary-alt: rgb(var(--ctp-crust));
+
+--background-modifier-hover: rgba(var(--ctp-text), 0.075);
+
+--background-modifier-form-field: rgba(var(--ctp-crust), 0.3);
+
+--background-modifier-success: rgba(var(--ctp-green), 1);
+
+--background-modifier-success-hover: rgba(var(--ctp-green), 0.9);
+
+--background-modifier-success-rgb: var(--ctp-green);
+
+--background-modifier-error: rgba(var(--ctp-red), 1);
+
+--background-modifier-error-rgb: var(--ctp-red);
+
+--background-modifier-error-hover: rgba(var(--ctp-red), 0.9);
+
+--background-modifier-message: rgba(var(--ctp-crust), 0.9);
+
+--background-modifier-border: rgb(var(--ctp-surface1));
+
+--background-modifier-border-hover: rgb(var(--ctp-surface2));
+
+--background-modifier-border-focus: rgb(var(--ctp-overlay0));
+
+--background-modifier-cover: #00000022;
+
+
+/* Text colors */
+
+--modal-border-color: rgb(var(--ctp-surface0));
+
+--text-normal: rgb(var(--ctp-text));
+
+--text-muted: rgb(var(--ctp-overlay2));
+
+--text-muted-rgb: var(--ctp-overlay2);
+
+--text-faint: rgb(var(--ctp-subtext0));
+
+--text-error: rgb(var(--ctp-red));
+
+--text-error-hover: rgba(var(--ctp-red), 0.8);
+
+--text-success: rgb(var(--ctp-green));
+
+--text-on-accent: rgb(var(--ctp-base));
+
+
+/* Interactive elements */
+
+--interactive-normal: rgb(var(--ctp-surface0));
+
+--interactive-hover: rgb(var(--ctp-surface1));
+
+--interactive-success: rgb(var(--ctp-green));
+
+
+/* Workspace and other elements */
+
+--workspace-background-translucent: rgba(var(--ctp-crust), 0.6);
+
+--blockquote-background-color: rgba(var(--ctp-crust), 0.5);
+
+--drag-ghost-background: rgb(var(--ctp-text));
+
+--drag-ghost-text-color: rgb(var(--ctp-crust));
+
+--nav-indentation-guide-color: rgba(var(--ctp-crust), 0.4);
+
+--titlebar-text-color-focused: var(--background-primary);
+
+--callout-title-padding: var(--size-4-2);
+
+--embed-block-shadow-hover: none;
+
+--anp-speech-bubble-opacity: 0.5;
+
+--icon-color-focused: var(--sp-cream-light);
+
+
+/* Color scheme and rendering */
+
+color-scheme: light;
+
+--highlight-mix-blend-mode: none;
+
+--link-decoration: none;
+
+--link-decoration-hover: none;
+
+}
+
+
+
+.theme-light.theme-light {
+
+--canvas-color: var(--ctp-overlay0);
+
+}
+
+
+
+/*===============================================================
+
+DARK THEME — CONSOLIDATED COLOR VARIABLES & MAPPINGS
+*===============================================================*/
+
+
+
+/* Dark mode — Dracula base colors */
+
+.theme-dark {
+
+/* Base color palette */
+
+--ctp-rosewater: 230, 96, 173;
+
+--ctp-flamingo: 255, 146, 223;
+
+--ctp-pink: 255, 121, 198;
+
+--ctp-mauve: 214, 172, 255;
+
+--ctp-red: 255, 85, 85;
+
+--ctp-maroon: 255, 110, 110;
+
+--ctp-peach: 255, 184, 108;
+
+--ctp-yellow: 241, 250, 140;
+
+--ctp-green: 80, 250, 123;
+
+--ctp-teal: 114, 208, 228;
+
+--ctp-sky: 139, 233, 253;
+
+--ctp-sapphire: 189, 147, 249;
+
+--ctp-blue: 84, 179, 255;
+
+--ctp-lavender: 189, 147, 249;
+
+--ctp-text: 248, 248, 242;
+
+--ctp-subtext1: 186, 188, 201;
+
+--ctp-subtext0: 255, 121, 198;
+
+--ctp-overlay2: 139, 233, 253;
+
+--ctp-overlay1: 255, 184, 108;
+
+--ctp-overlay0: 80, 250, 123;
+
+--ctp-surface2: 98, 114, 164;
+
+--ctp-surface1: 68, 71, 90;
+
+--ctp-surface0: 52, 55, 70;
+
+--ctp-base: 15, 22, 19;
+
+--ctp-mantle: 33, 34, 44;
+
+--ctp-crust: 25, 26, 33;
+
+
+
+/* Color mappings to Obsidian variables */
+
+--mono-rgb-0: var(--ctp-text);
+
+--mono-rgb-100: var(--ctp-crust);
+
+--color-red-rgb: var(--ctp-red);
+
+--color-red: rgb(var(--ctp-red));
+
+--color-green-rgb: var(--ctp-green);
+
+--color-green: rgb(var(--ctp-green));
+
+--color-orange-rgb: var(--ctp-peach);
+
+--color-orange: rgb(var(--ctp-peach));
+
+--color-yellow-rgb: var(--ctp-yellow);
+
+--color-yellow: rgb(var(--ctp-yellow));
+
+--color-cyan-rgb: var(--ctp-sky);
+
+--color-cyan: rgb(var(--ctp-sky));
+
+--color-blue-rgb: var(--ctp-blue);
+
+--color-blue: rgb(var(--ctp-blue));
+
+--color-purple-rgb: var(--ctp-lavender);
+
+--color-purple: rgb(var(--ctp-lavender));
+
+--color-pink-rgb: var(--ctp-pink);
+
+--color-pink: rgb(var(--ctp-pink));
+
+
+/* Base color scales */
+
+--color-base-00: rgb(var(--ctp-crust));
+
+--color-base-10: rgb(var(--ctp-mantle));
+
+--color-base-20: rgb(var(--ctp-base));
+
+--color-base-25: rgb(var(--ctp-surface0));
+
+--color-base-30: rgb(var(--ctp-surface1));
+
+--color-base-35: rgb(var(--ctp-surface1));
+
+--color-base-40: rgb(var(--ctp-surface2));
+
+--color-base-50: rgb(var(--ctp-overlay0));
+
+--color-base-60: rgb(var(--ctp-overlay1));
+
+--color-base-70: rgb(var(--ctp-overlay2));
+
+--color-base-100: rgb(var(--ctp-text));
+
+
+/* Background colors */
+
+--background-primary: rgb(var(--ctp-base));
+
+--background-primary-alt: rgb(var(--ctp-mantle));
+
+--background-secondary: rgb(var(--ctp-mantle));
+
+--background-secondary-alt: rgb(var(--ctp-crust));
+
+--background-modifier-border: rgb(var(--ctp-surface0));
+
+--background-modifier-border-hover: rgb(var(--ctp-surface1));
+
+--background-modifier-border-focus: rgb(var(--ctp-surface2));
+
+--background-modifier-cover: rgba(var(--ctp-mantle), 0.4);
+
+
+/* Text colors */
+
+--text-normal: rgb(var(--ctp-text));
+
+--text-muted: rgb(var(--ctp-subtext1));
+
+--text-faint: rgb(var(--ctp-overlay2));
+
+--text-on-accent: rgb(var(--ctp-base));
+
+
+/* Icons and interface elements */
+
+--icon-color: rgb(var(--ctp-subtext1));
+
+--icon-color-hover: rgb(var(--ctp-text));
+
+--icon-color-active: rgb(var(--ctp-text));
+
+--icon-color-focused: rgb(var(--ctp-text));
+
+--tab-text-color-focused-active: rgb(var(--ctp-text));
+
+--tab-text-color-focused-active-current: rgb(var(--ctp-text));
+
+--nav-item-color-active: rgb(var(--ctp-text));
+
+--nav-item-color-hover: rgb(var(--ctp-text));
+
+
+/* Cards and tabs */
+
+--card-background-color: rgb(var(--ctp-crust));
+
+--card-foreground-color: rgb(var(--ctp-base));
+
+--tab-inactive-color: rgb(var(--ctp-mantle));
+
+
+/* Inline title and headings */
+
+--inline-title-color: #F8F8F2;
+
+--h1-color: #FF5555;
+
+--h2-color: #FFB86C;
+
+--h3-color: var(--sp-teal-link);
+
+--h4-color: #50FA7B;
+
+--h5-color: #BD93F9;
+
+--h6-color: #707487;
+
+
+/* Color scheme and rendering */
+
+color-scheme: dark;
+
+--highlight-mix-blend-mode: none;
+
+--link-decoration: none;
+
+--link-decoration-hover: none;
+
+--link-external-decoration: underline;
+
+--link-external-decoration-hover: underline;
+
+}
+
+
+
+.theme-dark.theme-dark {
+
+--canvas-color: var(--ctp-overlay0);
+
+}
+
+
+
+/* Dark mode inline title */
+
+.theme-dark .inline-title {
+
+color: var(--inline-title-color);
+
+}
+
+
+
+/*===============================================================
+
+DARK THEME — SCOPED LINK COLORS & FILE EXPLORER FIX
+*===============================================================*/
+
+
+
+/* Link colors scoped to editor/content only - NOT file explorer */
+
+.theme-dark .workspace-leaf-content,
+
+.theme-dark .markdown-source-view,
+
+.theme-dark .markdown-preview-view,
+
+.theme-dark .metadata-container {
+
+--link-color: var(--sp-teal-link);
+
+--link-color-hover: var(--sp-teal-link);
+
+--link-external-color: var(--sp-teal-link);
+
+--link-external-color-hover: var(--sp-teal-link);
+
+--link-unresolved-color: var(--sp-teal-link);
+
+--link-unresolved-opacity: 0.7;
+
+}
+
+
+
+/* Specific link element colors in dark mode */
+
+.theme-dark .markdown-rendered .internal-link,
+
+.theme-dark .cm-hmd-internal-link,
+
+.theme-dark .data-link-text,
+
+.theme-dark span.data-link-text,
+
+.theme-dark .cm-hmd-internal-link .data-link-text,
+
+.theme-dark .cm-link,
+
+.theme-dark .cm-url,
+
+.theme-dark .cm-underline,
+
+.theme-dark .markdown-rendered .external-link,
+
+.theme-dark .markdown-source-view .external-link,
+
+.theme-dark .multi-select-pill-content.internal-link,
+
+.theme-dark .metadata-container .internal-link,
+
+.theme-dark .tree-item-inner .internal-link,
+
+.theme-dark .search-result-file-match .internal-link {
+
+color: var(--sp-teal-link);
+
+}
+
+
+
+.theme-dark .markdown-rendered .internal-link:hover,
+
+.theme-dark .markdown-rendered .internal-link:active,
+
+.theme-dark .cm-hmd-internal-link:hover,
+
+.theme-dark .data-link-text:hover,
+
+.theme-dark span.data-link-text:hover,
+
+.theme-dark .cm-link:hover,
+
+.theme-dark .multi-select-pill-content.internal-link:hover,
+
+.theme-dark .metadata-container a[href]:hover {
+
+color: var(--sp-teal-link);
+
+text-decoration: none;
+
+}
+
+
+
+.theme-dark .markdown-rendered .external-link:hover,
+
+.theme-dark .markdown-rendered a[href^="http"]:hover {
+
+color: var(--sp-teal-link);
+
+text-decoration: underline;
+
+}
+
+
+
+/* FIXED: File explorer specific selectors - no more wildcard bleeding */
+
+.theme-dark .nav-files-container .nav-file-title,
+
+.theme-dark .nav-files-container .nav-folder-title {
+
+--link-color: inherit;
+
+--link-color-hover: inherit;
+
+}
+
+
+
+.theme-dark .nav-files-container .data-link-icon,
+
+.theme-dark .nav-files-container .data-link-icon::after,
+
+.theme-dark .suggestion-title.data-link-icon,
+
+.theme-dark .suggestion-title.data-link-icon::after,
+
+.theme-dark .nav-files-container .nav-file-title-content {
+
+color: inherit;
+
+}
+
+
+
+/* File explorer hover effects */
+
+.theme-dark:not(.is-grabbing) .nav-files-container > div > .nav-folder .nav-folder-title:hover,
+
+.theme-dark:not(.is-grabbing) .nav-files-container > div .nav-file .nav-file-title:hover {
+
+filter: brightness(0.85);
+
+}
+
+
+
+/* Dark mode: sidebar pane text (tags, backlinks, etc.) */
+
+.theme-dark .tree-item-inner-text {
+
+color: #F8F8F2;
+
+}
+
+
+
+/* Dark mode: popover titlebar — cyan instead of purple */
+
+.theme-dark .popover-titlebar {
+
+background-color: #72D0E4;
+
+}
+
+
+
+/* Dark callout and task text */
+
+.theme-dark .callout:not([data-callout-metadata*=revert]) > .callout-title > .callout-title-inner {
+
+color: rgb(var(--ctp-text));
+
+}
+
+
+
+.theme-dark [data-task="0"], .theme-dark [data-task="1"], .theme-dark [data-task="2"],
+
+.theme-dark [data-task="3"], .theme-dark [data-task="4"], .theme-dark [data-task="5"],
+
+.theme-dark [data-task="6"], .theme-dark [data-task="7"], .theme-dark [data-task="8"],
+
+.theme-dark [data-task="9"] {
+
+color: rgb(var(--ctp-text));
+
+}
+
+
+
+/*===============================================================
+
+ACCENT COLOR & GLOBAL VARIABLES
+*===============================================================*/
+
+
+
+/* Accent: Dracula purple (dark) / Dracula deep purple (light) */
+
+body {
+
+--ctp-accent: var(--ctp-sapphire);
+
+--color-accent: rgb(var(--ctp-accent));
+
+--color-accent-1: rgb(var(--ctp-accent));
+
+--color-accent-2: rgba(var(--ctp-accent), 0.9);
+
+--text-selection: rgba(var(--ctp-accent), 0.25);
+
+--interactive-accent: rgb(var(--ctp-accent));
+
+--interactive-accent-hover: rgba(var(--ctp-accent), 0.9);
+
+--text-accent: rgb(var(--ctp-accent));
+
+--text-accent-hover: rgb(var(--ctp-accent));
+
+--interactive-accent-rgb: var(--ctp-accent);
+
+--blockquote-border-color: rgb(var(--ctp-accent));
+
+--background-modifier-active-hover: rgba(var(--ctp-accent), 0.15);
+
+--link-unresolved-decoration-color: rgba(var(--ctp-accent), 0.3);
+
+--tag-background: rgba(var(--ctp-accent), 0.1);
+
+--tag-background-hover: rgba(var(--ctp-accent), 0.2);
+
+--tag-border-color: rgba(var(--ctp-accent), 0.15);
+
+--tag-border-color-hover: rgba(var(--ctp-accent), 0.15);
+
+--nav-item-background-selected: rgba(var(--ctp-accent), 0.2);
+
+--heading-formatting: rgb(var(--ctp-accent));
+
+--icon-color-focused: rgb(var(--ctp-text));
+
+}
+
+
+
+/*===============================================================
+
+HEADINGS & TYPOGRAPHY
+*===============================================================*/
+
+
+
+body {
+
+--h1-font: "Source Serif Pro", serif;
+
+--h2-font: "Source Serif Pro", serif;
+
+--h3-font: "Source Serif Pro", serif;
+
+--h4-font: "Source Serif Pro", serif;
+
+--h5-font: "Source Serif Pro", serif;
+
+--h6-font: "Source Serif Pro", serif;
+
+--h1-size: 1.75em;
+
+--h1-weight: var(--font-black);
+
+--h1-line-height: 1.2;
+
+--h1-color: #CB3A2A;
+
+--h2-size: 1.50em;
+
+--h2-weight: var(--font-bold);
+
+--h2-color: #D16319;
+
+--h3-size: 1.35em;
+
+--h3-weight: var(--font-bold);
+
+--h3-color: #179299;
+
+--h4-size: 1.2em;
+
+--h4-weight: var(--font-semibold);
+
+--h4-color: #198D0C;
+
+--h5-size: 1.2em;
+
+--h5-weight: var(--font-semibold);
+
+--h5-color: #644AC9;
+
+--h6-size: 1.1em;
+
+--h6-weight: var(--font-semibold);
+
+--h6-color: #6C664B;
+
+--bold-weight: var(--font-bold);
+
+--code-comment: var(--color-orange-text);
+
+--anp-header-font: "Source Serif Pro", serif;
+
+--anp-rainbow-folder-bg-opacity: 0.9;
+
+--anp-rainbow-folder-border-opacity: 1;
+
+--anp-rainbow-folder-collapse-border-custom: #00000044;
+
+--anp-preview-width-pct: 95%;
+
+--anp-preview-width-max: 800px;
+
+--anp-header-margin-value: 15px;
+
+--tab-stacked-pane-width: var(--file-line-width);
+
+--anp-table-width-pct: 100%;
+
+--code-background: var(--background-secondary-alt);
+
+--card-background-color: rgba(var(--ctp-accent), 1);
+
+--tab-inactive-color: rgb(var(--ctp-mantle));
+
+--code-normal: var(--text-normal);
+
+--background-modifier-active: hsla(var(--color-accent-hsl), 0.1);
+
+--pdf-background: var(--background-primary);
+
+--pdf-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 8px transparent;
+
+--pdf-sidebar-background: var(--background-primary);
+
+--pdf-thumbnail-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 2px 8px transparent;
+
+--bold-weight: 700;
+
+}
+
+
+
+/* H1 bottom divider (color follows heading) */
+
+.markdown-rendered h1,
+
+.HyperMD-header-1 {
+
+border-bottom: var(--hr-thickness) solid currentColor;
+
+padding-bottom: 2px;
+
+}
+
+
+
+.cm-formatting-header-1 { color: var(--h1-color); }
+
+.cm-formatting-header-2 { color: var(--h2-color); }
+
+.cm-formatting-header-3 { color: var(--h3-color); }
+
+.cm-formatting-header-4 { color: var(--h4-color); }
+
+.cm-formatting-header-5 { color: var(--h5-color); }
+
+.cm-formatting-header-6 { color: var(--h6-color); }
+
+
+
+/*===============================================================
+
+CARD LAYOUT & SAFARI TABS
+*===============================================================*/
+
+
+
+/* Card Layout (always on) */
+
+body {
+
+--card-foreground-color: var(--background-primary);
+
+--divider-color: transparent;
+
+--tab-outline-color: var(--background-modifier-border);
+
+--divider-color-hover: var(--background-modifier-border);
+
+--divider-width: 4px;
+
+--divider-width-hover: 4px;
+
+--tab-container-background: var(--card-background-color);
+
+--file-header-border: var(--border-width) dashed var(--background-modifier-border);
+
+--ribbon-padding: 0;
+
+--anp-card-layout-padding: 1px;
+
+--anp-card-radius: 8px;
+
+--anp-card-header-left-padding: 10px;
+
+--header-height: 40px;
+
+--tab-stacked-header-width: 40px;
+
+--anp-border-radius: 16px;
+
+--anp-border-padding: 20px;
+
+}
+
+
+
+.sidebar-toggle-button,
+
+.workspace-tabs.mod-top {
+
+--tab-container-background: var(--card-background-color);
+
+}
+
+
+
+.workspace-tabs.mod-top:has(.obsidian-banner-wrapper) {
+
+--file-header-border: none;
+
+}
+
+
+
+.mod-left-split .workspace-tabs .workspace-leaf,
+
+.mod-right-split .workspace-tabs .workspace-leaf,
+
+.mod-left-split,
+
+.mod-vertical .workspace-tab-container,
+
+.mod-vertical,
+
+.workspace-split.mod-vertical,
+
+.workspace-fake-target-overlay:not(.is-in-sidebar) .workspace-tabs .workspace-leaf,
+
+.mod-root .workspace-tabs .workspace-leaf,
+
+.workspace-ribbon.mod-left,
+
+.workspace-ribbon.mod-left:before {
+
+background-color: var(--tab-container-background);
+
+}
+
+
+
+.workspace-ribbon.mod-left {
+
+margin-right: var(--anp-card-layout-padding, 10px);
+
+}
+
+
+
+.side-dock-actions {
+
+border-radius: 0px var(--anp-card-radius, var(--radius-xl)) var(--anp-card-radius, var(--radius-xl)) 0px;
+
+margin-top: 2px;
+
+border-width: 1px 1px 0px 1px;
+
+border-style: solid;
+
+border-color: var(--tab-outline-color);
+
+background-color: var(--card-foreground-color);
+
+padding: var(--size-4-2) var(--size-4-1) var(--size-4-3);
+
+}
+
+
+
+.workspace-split.mod-left-split .workspace-sidedock-vault-profile {
+
+border: none;
+
+margin: var(--anp-card-layout-padding, 10px);
+
+margin-bottom: 0;
+
+background-color: rgba(var(--ctp-accent), 1) !important;
+
+}
+
+
+
+.workspace-ribbon.mod-left {
+
+margin-top: calc(var(--header-height) - 1px);
+
+}
+
+
+
+.workspace-tab-header-container,
+
+.workspace-ribbon.mod-left:before {
+
+border-bottom: none;
+
+}
+
+
+
+.mod-vertical .workspace-tabs {
+
+padding-left: var(--anp-card-layout-padding, 10px);
+
+padding-right: var(--anp-card-layout-padding, 10px);
+
+}
+
+
+
+.mod-vertical .workspace-tabs .workspace-tab-header-container {
+
+padding-left: var(--anp-card-header-left-padding, 20px);
+
+}
+
+
+
+.mod-vertical .workspace-tabs .workspace-tab-header-container .workspace-tab-header-container-inner {
+
+margin: 6px -5px calc(var(--tab-outline-width) * -1);
+
+}
+
+
+
+.mod-left-split .workspace-tab-container,
+
+.mod-right-split .workspace-tab-container {
+
+padding-left: var(--anp-card-layout-padding, 10px);
+
+padding-right: var(--anp-card-layout-padding, 10px);
+
+background-color: var(--tab-container-background);
+
+}
+
+
+
+.workspace-split .workspace-leaf-content:not([data-type=file-explorer]),
+
+.workspace-leaf-content[data-type=file-explorer] {
+
+border-radius: var(--anp-card-radius, var(--radius-xl));
+
+background-color: var(--card-foreground-color);
+
+border: 1px solid var(--tab-outline-color);
+
+margin-bottom: var(--anp-card-layout-padding, 10px);
+
+}
+
+
+
+/* Card shadows */
+
+.workspace-split .workspace-leaf-content,
+
+.side-dock-actions,
+
+.workspace-split .workspace-leaf-content[data-type=file-explorer] {
+
+box-shadow: 0 3px 4px 0px rgba(0, 0, 0, 0.05);
+
+}
+
+
+
+.workspace-split .mod-stacked .workspace-leaf-content {
+
+border-radius: 0;
+
+border: none;
+
+margin-bottom: 0px;
+
+}
+
+
+
+.workspace-split.mod-horizontal > * {
+
+width: unset;
+
+}
+
+
+
+.workspace .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header {
+
+border-style: solid;
+
+border-radius: var(--anp-card-radius, var(--radius-xl)) 0px 0px var(--anp-card-radius, var(--radius-xl));
+
+border-width: var(--tab-outline-width);
+
+border-color: var(--tab-outline-color);
+
+border-right: var(--tab-outline-width) dashed var(--tab-outline-color);
+
+}
+
+
+
+.workspace .workspace-tabs.mod-stacked .workspace-leaf {
+
+border-left-width: 0px;
+
+border-top-width: var(--tab-outline-width);
+
+border-bottom-width: var(--tab-outline-width);
+
+border-style: solid;
+
+border-color: var(--tab-outline-color);
+
+border-radius: 0 var(--anp-card-radius, var(--radius-xl)) var(--anp-card-radius, var(--radius-xl)) 0;
+
+}
+
+
+
+.workspace .workspace-tabs.mod-stacked .workspace-tab-container {
+
+padding-bottom: var(--anp-card-layout-padding, 10px);
+
+}
+
+
+
+.workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-leaf {
+
+background-color: var(--background-primary);
+
+}
+
+
+
+.workspace, .horizontal-main-container,
+
+.mod-vertical .workspace-tabs {
+
+background-color: var(--tab-container-background);
+
+}
+
+
+
+/* Safari Tabs (always on, animated) */
+
+.theme-light .workspace-split.mod-vertical.mod-root {
+
+--tab-background-inactive: var(--background-secondary-alt);
+
+--tab-background-active: var(--background-primary);
+
+--tab-text-color: var(--text-faint);
+
+--tab-text-color-active: var(--text-muted);
+
+--tab-text-color-focused: var(--text-muted);
+
+--tab-text-color-focused-active: #644AC9;
+
+--tab-text-color-focused-highlighted: var(--text-normal);
+
+--tab-text-color-focused-active-current: #644AC9;
+
+}
+
+
+
+.theme-dark .workspace-split.mod-vertical.mod-root {
+
+--tab-background-inactive: var(--background-secondary-alt);
+
+--tab-background-active: var(--background-primary);
+
+--tab-text-color: var(--sp-teal-link);
+
+--tab-text-color-active: var(--sp-teal-active);
+
+--tab-text-color-focused: var(--sp-teal-link);
+
+--tab-text-color-focused-active: var(--sp-teal-active);
+
+--tab-text-color-focused-highlighted: var(--sp-teal-active);
+
+--tab-text-color-focused-active-current: var(--sp-teal-active);
+
+--tab-divider-color: var(--background-modifier-border-hover);
+
+--tab-width: 200px;
+
+--tab-max-width: 320px;
+
+}
+
+
+
+.workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-container .workspace-tab-header-container-inner {
+
+margin: 5px 0;
+
+gap: 3px;
+
+}
+
+
+
+.workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header {
+
+border-radius: 5px;
+
+border: 1px solid var(--tab-outline-color);
+
+background-color: var(--tab-background-inactive);
+
+color: var(--text-muted);
+
+max-width: var(--tab-max-width);
+
+}
+
+
+
+.workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header:not(.is-active) {
+
+--icon-color: var(--text-muted);
+
+--icon-color-hover: var(--text-muted);
+
+}
+
+
+
+.workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header .workspace-tab-header-inner .workspace-tab-header-inner-title {
+
+margin-top: 3px;
+
+}
+
+
+
+.workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header::before,
+
+.workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header::after {
+
+display: none;
+
+}
+
+
+
+.workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header.is-active {
+
+background-color: var(--tab-background-active);
+
+max-width: var(--tab-max-width);
+
+box-shadow: none;
+
+}
+
+
+
+.workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+
+background-color: transparent;
+
+}
+
+
+
+/* Light mode: Maintain blue background on sidebar tab hover with subtle shade change */
+
+.theme-light .mod-left-split .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner,
+
+.theme-light .mod-right-split .workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner {
+
+background-color: rgba(120, 98, 208, 0.92); /* Very subtle hover shade */
+
+}
+
+/* Light mode: Active sidebar tab hover — keep blue bg, slightly lighter */
+
+.theme-light .mod-left-split .workspace-tab-header.is-active:hover,
+
+.theme-light .mod-right-split .workspace-tab-header.is-active:hover {
+
+background-color: #8A76D9 !important;
+
+}
+
+/* Dark mode: Active sidebar tab hover */
+
+.theme-dark .mod-left-split .workspace-tab-header.is-active:hover,
+
+.theme-dark .mod-right-split .workspace-tab-header.is-active:hover {
+
+background-color: #9B72D9 !important;
+
+}
+
+
+
+.workspace-tab-header-container-inner {
+
+flex: 0 1 auto;
+
+min-width: 0;
+
+}
+
+
+
+/* Safari tabs — animations removed for performance */
+
+.workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header {
+
+transition: none;
+
+}
+
+
+
+.workspace-split.mod-vertical.mod-root .workspace-tabs .workspace-tab-header-container .workspace-tab-header-container-inner .workspace-tab-header.is-active {
+
+flex-grow: 1.67;
+
+max-width: 300px;
+
+}
+
+
+
+body,
+
+.workspace-tabs:not(.mod-stacked) {
+
+--tab-background: var(--background-secondary);
+
+--tab-background-active: var(--background-primary);
+
+--tab-font-size: 12px;
+
+--tab-height: calc(var(--header-height) * 0.7);
+
+--tab-max-width: 200px;
+
+--tab-max-width-active: 300px;
+
+}
+
+
+
+.workspace-split.mod-vertical .workspace-tab-header-spacer {
+
+flex-shrink: 1;
+
+min-width: 0;
+
+}
+
+
+
+/*---------------------------------------------------------------
+
+TITLEBAR DRAG REGION FIX
+The container-inner must not flex-grow, otherwise it expands
+to cover the entire tab header bar, blocking Obsidian's native
+-webkit-app-region: drag on the titlebar. flex-grow: 0 lets
+it size to its tabs and leaves empty space for window dragging.
+See: .workspace-tab-header-container-inner { flex: 0 1 auto }
+*---------------------------------------------------------------*/
+
+
+
+.workspace-split.mod-vertical .workspace-tab-header-new-tab {
+
+margin-left: auto;
+
+}
+
+
+
+.theme-light .is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+
+.theme-light .is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+
+color: #644AC9;
+
+}
+
+
+
+.theme-dark .is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+
+.theme-dark .is-focused .mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-title {
+
+color: #BD93F9;
+
+}
+
+
+
+/* Dark mode: inactive center tab text */
+
+.theme-dark .mod-root .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-title {
+
+color: var(--sp-teal-link);
+
+}

@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/martin/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/martin/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/martin/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/martin/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/martin/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/Users/martin/.cache/nvim/packer_hererocks/2.1.1792588164/share/lua/5.1/?.lua;/Users/martin/.cache/nvim/packer_hererocks/2.1.1792588164/share/lua/5.1/?/init.lua;/Users/martin/.cache/nvim/packer_hererocks/2.1.1792588164/lib/luarocks/rocks-5.1/?.lua;/Users/martin/.cache/nvim/packer_hererocks/2.1.1792588164/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/martin/.cache/nvim/packer_hererocks/2.1.1792588164/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -76,32 +76,52 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["Comment.nvim"] = {
     loaded = true,
-    path = "/home/martin/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    path = "/Users/martin/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
+  },
+  dracula = {
+    loaded = true,
+    path = "/Users/martin/.local/share/nvim/site/pack/packer/start/dracula",
+    url = "https://github.com/dracula/vim"
+  },
+  everforest = {
+    config = { "\27LJ\2\ng\0\0\2\0\5\0\t6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0+\1\2\0=\1\4\0K\0\1\0\29everforest_enable_italic\vmedium\26everforest_background\6g\bvim\0" },
+    loaded = true,
+    path = "/Users/martin/.local/share/nvim/site/pack/packer/start/everforest",
+    url = "https://github.com/sainnhe/everforest"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
-    path = "/home/martin/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    path = "/Users/martin/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
+  ["kanagawa.nvim"] = {
+    loaded = true,
+    path = "/Users/martin/.local/share/nvim/site/pack/packer/start/kanagawa.nvim",
+    url = "https://github.com/rebelot/kanagawa.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
-    path = "/home/martin/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    path = "/Users/martin/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/martin/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    path = "/Users/martin/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/martin/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    path = "/Users/martin/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: everforest
+time([[Config for everforest]], true)
+try_loadstring("\27LJ\2\ng\0\0\2\0\5\0\t6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\0\0009\0\1\0+\1\2\0=\1\4\0K\0\1\0\29everforest_enable_italic\vmedium\26everforest_background\6g\bvim\0", "config", "everforest")
+time([[Config for everforest]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

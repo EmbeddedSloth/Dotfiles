@@ -46,6 +46,17 @@ return packer.startup(function(use)
   use { "numToStr/Comment.nvim", commit = "97a188a98b5a3a6f9b1b850799ac078faa17ab67" }
 -- Git
   use { "lewis6991/gitsigns.nvim", commit = "2c6f96dda47e55fa07052ce2e2141e8367cbaaf2" }
+use {
+  'sainnhe/everforest',
+  config = function()
+    -- Postavke izgleda (opcionalno)
+    vim.g.everforest_background = 'medium' -- Mogucnosti: 'hard', 'medium', 'soft'
+    vim.g.everforest_enable_italic = true  -- Omogucuje koso pismo (italic)
+  end
+}
+--Colorschemes
+  use { "dracula/vim", as="dracula" }
+  use "rebelot/kanagawa.nvim"
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
